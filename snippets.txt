@@ -1,0 +1,17 @@
+if([pc isEqualToString: @"Alien Blue"]){
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alienblue://example"]])
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alienblue://thread/https://reddit.com%@", [[self links][ip.row] url]]]];
+    else
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+}else if([pc isEqualToString: @"Luna"]){
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"luna://example"]])
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"luna://post/%@",[[self links][ip.row] url]]]];
+    else
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+}else if([pc isEqualToString: @"amrc"]){
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"amrc://example"]])
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"amrc://%@", [[self links][ip.row] url]]]];
+    else
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+}else
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];

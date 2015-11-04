@@ -7,7 +7,6 @@ Tanner Bennett (@ThePantsThief) | Bryce Jackson (@thebryc3isright)
 ### todo :
 
 - add authentication-based features using RedditKit
+- add client selection
 
 ### known issues :
-
-- searching may or may not cause a springboard crash
