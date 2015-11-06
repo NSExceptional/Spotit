@@ -32,7 +32,7 @@ UIWindow *settingsView;
 
 - (void)openSupportMail {
     MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
-    [mailer setSubject:@"Tweak Support - Spotit"];
+    [mailer setSubject:@"Tweak Support - Spotit+"];
     [mailer setToRecipients:[NSArray arrayWithObjects:@"bryce@brycedev.com", nil]];
     [self.navigationController presentViewController:mailer animated:YES completion: nil];
     mailer.mailComposeDelegate = self;

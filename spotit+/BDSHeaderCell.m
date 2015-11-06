@@ -15,7 +15,7 @@
             UILabel *tweakName = [[UILabel alloc] initWithFrame: CGRectMake(0, 10, width, 70)];
             [tweakName setNumberOfLines: 1];
             tweakName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size: 42];
-            [tweakName setText: @"Spotit"];
+            [tweakName setText: @"Spotit+"];
             [tweakName setBackgroundColor: [UIColor clearColor]];
             tweakName.textColor = [UIColor whiteColor];
             tweakName.textAlignment = NSTextAlignmentCenter;

@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>Spotit</string>
+	<string>Spotit+</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.brycedev.spotit</string>
+	<string>com.brycedev.spotit+</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
