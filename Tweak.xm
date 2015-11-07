@@ -61,7 +61,13 @@ BOOL searchIsActive;
     [self presentViewController:viewControllerToCommit animated:YES completion:nil];
 }
 - (void)loadRedditDataJson {
+    NSString *source = [[BDSettingsManager sharedManager] source];
     NSString *url = [NSString stringWithFormat:@"https://www.reddit.com/hot.json?limit=%@", @(20)];
+    if([source isEqualToString: @"All"]){
+        url = [NSString stringWithFormat:@"https://www.reddit.com/r/all/%@.json?limit=%@", [[BDSettingsManager sharedManager] sort], @([[BDSettingsManager sharedManager] count])];
+    }else if([source isEqualToString: @"Subreddit"]){
+        url = [NSString stringWithFormat:@"https://www.reddit.com/r/%@/%@.json?limit=%@", [[BDSettingsManager sharedManager] subreddit], [[BDSettingsManager sharedManager] sort], @([[BDSettingsManager sharedManager] count])];
+    }
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     request.HTTPMethod = @"GET";
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
@@ -190,7 +196,7 @@ BOOL searchIsActive;
 - (SPUISearchTableHeaderView *)tableView:(id)tv viewForHeaderInSection:(int)section {
     if(section == 2 && !searchIsActive){
         SPUISearchTableHeaderView *v = %orig(tv, section);
-        [v updateWithTitle: @"Spotit" section: section isExpanded: YES];
+        [v updateWithTitle: @"Spotit+" section: section isExpanded: YES];
         return v;
     }
     return %orig(tv, section);

@@ -35,6 +35,7 @@
             <key>key</key><string>preferredClient</string>
             <key>PostNotification</key><string>com.brycedev.spotit+.prefschanged</string>
             <key>validTitles</key><array>
+				<string>Safari</string>
 				<string>Alien Blue</string>
                 <string>Luna</string>
                 <string>AMRC</string>
@@ -43,6 +44,7 @@
                 <integer>0</integer>
                 <integer>1</integer>
 				<integer>2</integer>
+				<integer>3</integer>
             </array>
         </dict>
 		<dict>

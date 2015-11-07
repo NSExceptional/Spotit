@@ -17,16 +17,17 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
 
 - (id)init {
     if (self = [super init]) {
-        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, prefschanged, CFSTR("com.brycedev.spotit.prefschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
+        CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, prefschanged, CFSTR("com.brycedev.spotit+.prefschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
         [self updateSettings];
+        //HBLogInfo(@"the settings for Spotit+ are : %@", [self settings]);
     }
     return self;
 }
 
 - (void)updateSettings {
     self.settings = nil;
-    CFPreferencesAppSynchronize(CFSTR("com.brycedev.spotit"));
-    CFStringRef appID = CFSTR("com.brycedev.spotit");
+    CFPreferencesAppSynchronize(CFSTR("com.brycedev.spotit+"));
+    CFStringRef appID = CFSTR("com.brycedev.spotit+");
     CFArrayRef keyList = CFPreferencesCopyKeyList(appID , kCFPreferencesCurrentUser, kCFPreferencesAnyHost) ?: CFArrayCreate(NULL, NULL, 0, NULL);
     self.settings = (NSDictionary *)CFPreferencesCopyMultiple(keyList, appID , kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
     CFRelease(keyList);
@@ -39,13 +40,27 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
 - (NSString *)preferredClient {
     NSInteger val = self.settings[@"preferredClient"] ? [self.settings[@"preferredClient"] integerValue] : 0;
     if(val == 0){
-        return @"Alien Blue";
+        return @"Safari";
     }else if(val == 1){
-        return @"Luna";
+        return @"Alien Blue";
     }else if(val == 2){
+        return @"Luna";
+    }else if(val == 3){
         return @"AMRC";
     }
-    return @"Alien Blue";
+    return @"Safari";
+}
+
+- (NSString *)source {
+    NSInteger val = self.settings[@"source"] ? [self.settings[@"source"] integerValue] : 0;
+    if(val == 0){
+        return @"All";
+    }else if(val == 1){
+        return @"Personal";
+    }else if(val == 2){
+        return @"Subreddit";
+    }
+    return @"All";
 }
 
 - (NSString *)subreddit {
@@ -65,7 +80,7 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
 }
 
 - (NSInteger)count {
-    return self.settings[@"count"] ? [self.settings[@"count"] integerValue] : 25;
+    return self.settings[@"count"] ? [self.settings[@"count"] integerValue] : 20;
 }
 
 @end
