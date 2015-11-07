@@ -36,4 +36,8 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
     return self.settings[@"enabled"] ? [self.settings[@"enabled"] boolValue] : YES;
 }
 
+- (NSInteger)preferredClient {
+    return self.settings[@"preferredClient"] ? [self.settings[@"preferredClient"] integerValue] : 0;
+}
+
 @end

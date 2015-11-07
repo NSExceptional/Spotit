@@ -2,7 +2,8 @@
 
 @property (nonatomic, copy) NSDictionary *settings;
 
-@property (nonatomic, readonly, getter=enabled) BOOL enabled;
+@property (nonatomic, readonly) BOOL enabled;
+@property (nonatomic, readonly) NSInteger preferredClient;
 
 + (instancetype)sharedManager;
 - (void)updateSettings;

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Feed Source</string>
+            <key>footerText</key><string>If selecting the "Personal" option, you must input your Reddit credentials.</string>
+		</dict>
+		<dict>
+            <key>cell</key><string>PSSegmentCell</string>
+            <key>defaults</key><string>com.brycedev.spotit+</string>
+			<key>default</key><integer>0</integer>
+            <key>key</key><string>sort</string>
+            <key>PostNotification</key><string>com.brycedev.spotit+.prefschanged</string>
+            <key>validTitles</key><array>
+				<string>All</string>
+                <string>Personal</string>
+                <string>Subreddit</string>
+            </array>
+            <key>validValues</key><array>
+                <integer>0</integer>
+                <integer>1</integer>
+				<integer>2</integer>
+            </array>
+        </dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Sort By</string>
+            <key>footerText</key><string></string>
+		</dict>
+		<dict>
+            <key>cell</key><string>PSSegmentCell</string>
+            <key>defaults</key><string>com.brycedev.spotit+</string>
+			<key>default</key><integer>0</integer>
+            <key>key</key><string>sort</string>
+            <key>PostNotification</key><string>com.brycedev.spotit+.prefschanged</string>
+            <key>validTitles</key><array>
+				<string>Hot</string>
+                <string>Top</string>
+                <string>New</string>
+            </array>
+            <key>validValues</key><array>
+                <integer>0</integer>
+                <integer>1</integer>
+				<integer>2</integer>
+            </array>
+        </dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string># Of Posts To Display</string>
+			<key>footerText</key><string></string>
+		</dict>
+		<dict>
+	    	<key>cell</key><string>PSSliderCell</string>
+			<key>showValue</key><true/>
+			<key>default</key><real>25.0</real>
+			<key>defaults</key><string>com.brycedev.spotit+</string>
+			<key>key</key><string>count</string>
+			<key>max</key><real>75.0</real>
+			<key>min</key><real>0.0</real>
+			<key>PostNotification</key><string>com.brycedev.spotit+.prefschanged</string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSGroupCell</string>
+			<key>label</key><string>Subreddit Options</string>
+            <key>footerText</key><string></string>
+		</dict>
+		<dict>
+			<key>cell</key><string>PSEditTextCell</string>
+			<key>label</key><string>Subreddit</string>
+			<key>defaults</key><string>com.brycedev.spotit+</string>
+			<key>placeholder</key><string>jailbreak</string>
+			<key>isDecimalPad</key><false/>
+			<key>key</key><string>subreddit</string>
+            <key>footerText</key><string></string>
+			<key>PostNotification</key><string>com.brycedev.spotit+.prefschanged</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Feed Options</string>
+</dict>
+</plist>
