@@ -56,11 +56,9 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
     NSInteger val = self.settings[@"sort"] ? [self.settings[@"sort"] integerValue] : 0;
     if(val == 0){
         return @"hot";
-    }
-    if(val == 1){
+    }else if(val == 1){
         return @"top";
-    }
-    if(val == 2){
+    }else if(val == 2){
         return @"new";
     }
     return @"hot";
