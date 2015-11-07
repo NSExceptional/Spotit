@@ -60,7 +60,7 @@ BOOL searchIsActive;
 - (void)previewingContext:(id<UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     [self presentViewController:viewControllerToCommit animated:YES completion:nil];
 }
-- (void)loadRedditData {
+- (void)loadRedditDataJson {
     NSString *url = [NSString stringWithFormat:@"https://www.reddit.com/hot.json?limit=%@", @(20)];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     request.HTTPMethod = @"GET";
@@ -128,7 +128,7 @@ BOOL searchIsActive;
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[self valueForKey:@"_searchViewController"] loadRedditData];
+                [[self valueForKey:@"_searchViewController"] loadRedditDataJson];
             });
         });
     }
@@ -164,18 +164,18 @@ BOOL searchIsActive;
 
 - (void)tableView:(id)tv didSelectRowAtIndexPath:(NSIndexPath *)ip {
     if (ip.section == 2 && !searchIsActive) {
-      NSInteger pc = [[BDSettingsManager sharedManager] preferredClient];
-      if(pc == 0){
+      NSString *pc = [[BDSettingsManager sharedManager] preferredClient];
+      if([pc isEqualToString: @"Alien Blue"]){
           if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alienblue://example"]])
               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alienblue://thread/https://reddit.com%@", [[self links][ip.row] url]]]];
           else
               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
-      }else if(pc == 1){
+      }else if([pc isEqualToString: @"Luna"]){
           if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"luna://example"]])
               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"luna://post/%@",[[self links][ip.row] url]]]];
           else
               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
-      }else if(pc == 2){
+      }else if([pc isEqualToString: @"AMRC"]){
           if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"amrc://example"]])
               [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"amrc://%@", [[self links][ip.row] url]]]];
           else
