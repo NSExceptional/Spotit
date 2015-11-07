@@ -64,13 +64,11 @@ BOOL searchIsActive;
     NSString *url = [NSString stringWithFormat:@"https://www.reddit.com/hot.json?limit=%@", @(20)];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
     request.HTTPMethod = @"GET";
-
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
     [[session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (!error) {
             NSError *jsonError = nil;
             NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-
             if (!jsonError) {
                 NSMutableArray *links = [NSMutableArray new];
                 for (NSDictionary *linkjson in json[@"data"][@"children"]) {
@@ -90,9 +88,7 @@ BOOL searchIsActive;
                     [link setResult:result];
                     [links addObject:link];
                 }
-
                 __block NSInteger count = [links count];
-
                 for (TBLink *link in links) {
                     if (![[link.thumbnailURL absoluteString] length]) {
                         if (--count == 0) {
@@ -103,7 +99,6 @@ BOOL searchIsActive;
                         }
                         continue;
                     }
-
                     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:link.thumbnailURL];
                     request.HTTPMethod = @"GET";
                     [[session dataTaskWithRequest:request completionHandler:^(NSData *data1, NSURLResponse *response1, NSError *error1) {
@@ -145,7 +140,6 @@ BOOL searchIsActive;
 
 - (void)viewDidLoad {
     %orig;
-    // Peek and pop
     if ([self.traitCollection respondsToSelector:@selector(forceTouchCapability)]) {
         [self registerForPreviewingWithDelegate:self sourceView:[self searchTableView]];
     }
@@ -170,7 +164,24 @@ BOOL searchIsActive;
 
 - (void)tableView:(id)tv didSelectRowAtIndexPath:(NSIndexPath *)ip {
     if (ip.section == 2 && !searchIsActive) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+      NSInteger pc = [[BDSettingsManager sharedManager] preferredClient];
+      if(pc == 0){
+          if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alienblue://example"]])
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alienblue://thread/https://reddit.com%@", [[self links][ip.row] url]]]];
+          else
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+      }else if(pc == 1){
+          if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"luna://example"]])
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"luna://post/%@",[[self links][ip.row] url]]]];
+          else
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+      }else if(pc == 2){
+          if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"amrc://example"]])
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"amrc://%@", [[self links][ip.row] url]]]];
+          else
+              [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
+      }else
+          [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]]];
     } else {
         %orig(tv, ip);
     }
