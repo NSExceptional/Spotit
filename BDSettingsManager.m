@@ -36,8 +36,38 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
     return self.settings[@"enabled"] ? [self.settings[@"enabled"] boolValue] : YES;
 }
 
-- (NSInteger)preferredClient {
-    return self.settings[@"preferredClient"] ? [self.settings[@"preferredClient"] integerValue] : 0;
+- (NSString *)preferredClient {
+    NSInteger val = self.settings[@"preferredClient"] ? [self.settings[@"preferredClient"] integerValue] : 0;
+    if(val == 0){
+        return @"Alien Blue";
+    }else if(val == 1){
+        return @"Luna";
+    }else if(val == 2){
+        return @"AMRC";
+    }
+    return @"Alien Blue";
+}
+
+- (NSString *)subreddit {
+    return self.settings[@"subreddit"] ? self.settings[@"subreddit"] : @"jailbreak";
+}
+
+- (NSString *)sort {
+    NSInteger val = self.settings[@"sort"] ? [self.settings[@"sort"] integerValue] : 0;
+    if(val == 0){
+        return @"hot";
+    }
+    if(val == 1){
+        return @"top";
+    }
+    if(val == 2){
+        return @"new";
+    }
+    return @"hot";
+}
+
+- (NSInteger)count {
+    return self.settings[@"count"] ? [self.settings[@"count"] integerValue] : 25;
 }
 
 @end
