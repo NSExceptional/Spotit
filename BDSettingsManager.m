@@ -79,6 +79,14 @@ void prefschanged(CFNotificationCenterRef center, void * observer, CFStringRef n
     return @"hot";
 }
 
+- (NSString *)redditUsername {
+    return self.settings[@"redditUsername"] ? self.settings[@"redditUsername"] : @"";
+}
+
+- (NSString *)redditPassword {
+    return self.settings[@"redditPassword"] ? self.settings[@"redditPassword"] : @"";
+}
+
 - (NSInteger)count {
     return self.settings[@"count"] ? [self.settings[@"count"] integerValue] : 20;
 }

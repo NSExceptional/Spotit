@@ -6,6 +6,8 @@
 @property (nonatomic, readonly) NSString * preferredClient;
 @property (nonatomic, readonly) NSString * subreddit;
 @property (nonatomic, readonly) NSString *sort;
+@property (nonatomic, readonly) NSString * redditUsername;
+@property (nonatomic, readonly) NSString *redditPassword;
 @property (nonatomic, readonly) NSString *source;
 @property (nonatomic, readonly) NSInteger count;
 

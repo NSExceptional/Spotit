@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = Spotit+
-Spotit+_FILES = BDSHeaderCell.m BDSClientController.m BDSFeedController.m BDSRootListController.m
+Spotit+_FILES = BDSHeaderCell.m BDSAuthController.m BDSClientController.m BDSFeedController.m BDSRootListController.m
 Spotit+_INSTALL_PATH = /Library/PreferenceBundles
 Spotit+_FRAMEWORKS = MessageUI UIKit
 Spotit+_PRIVATE_FRAMEWORKS = Preferences

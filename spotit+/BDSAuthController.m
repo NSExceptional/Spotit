@@ -1,14 +1,14 @@
 #import "Global.h"
-#include "BDSFeedController.h"
+#include "BDSAuthController.h"
 
 UIColor *originalTint;
 UIWindow *settingsView;
 
-@implementation BDSFeedController
+@implementation BDSAuthController
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
-		_specifiers = [[self loadSpecifiersFromPlistName:@"Feed" target:self] retain];
+		_specifiers = [[self loadSpecifiersFromPlistName:@"Auth" target:self] retain];
 	}
 	return _specifiers;
 }
