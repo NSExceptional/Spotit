@@ -289,7 +289,7 @@ BOOL searchIsActive;
         NSURL *defaultURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://redd.it/%@", [[self links][ip.row] url]]];
         if ([pc isEqualToString:@"Alien Blue"]) {
             if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alienblue://example"]])
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alienblue://thread/https://reddit.com/r/blank/%@/_", [[self links][ip.row] url]]]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"alienblue://thread/https://reddit.com/r/blank/comments/%@/_", [[self links][ip.row] url]]]];
             else
                 [[UIApplication sharedApplication] openURL:defaultURL];
         } else if ([pc isEqualToString:@"Luna"]) {
