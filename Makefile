@@ -1,7 +1,7 @@
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Spotit+
-Spotit+_FILES = BDSettingsManager.m TBLink.m Tweak.xm
+Spotit+_FILES = TBSettingsManager.m TBLink.m Tweak.xm
 Spotit+_FRAMEWORKS = CFNetwork Foundation UIKit
 Spotit+_PRIVATE_FRAMEWORKS = Search SpotlightUI
 

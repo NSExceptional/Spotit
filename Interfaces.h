@@ -1,3 +1,14 @@
+//
+//  Interfaces.h
+//  Spotit
+//
+//  Created by Tanner in 2015.
+//  Copyright © 2016 Tanner Bennett. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+@class TBLink;
+
 @interface SearchUISingleResultTableViewCell : NSObject
 - (id)initWithResult:(id)result style:(unsigned long)style;
 - (void)updateWithResult:(id)result;
@@ -32,8 +43,8 @@
 @end
 
 @interface SPUISearchViewController (TB) <UIViewControllerPreviewingDelegate>
-- (NSArray *)links;
-- (void)setLinks:(NSArray *)links;
+@property (nonatomic) NSArray<TBLink*> *links;
+@property (nonatomic, readonly) BOOL shouldShowFeedSection;
 @end
 
 @interface SPUISearchField : UITextField

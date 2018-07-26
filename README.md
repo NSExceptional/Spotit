@@ -1,12 +1,12 @@
-# spotit+ - the paid version of spotit
+# Spotit — Reddit in your Spotlight
+--
 
-### authors :
+### Authors
 
-Tanner Bennett (@ThePantsThief) | Bryce Jackson (@thebryc3isright)
+- Tanner Bennett (@ThePantsThief)
+- Bryce Jackson (@thebryc3isright)
 
-### todo :
+### Todo
 
-- add authentication-based features using RedditKit
-- add client selection
-
-### known issues :
+- authentication-based features using RedditKit
+- client selection

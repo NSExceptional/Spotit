@@ -1,9 +1,9 @@
 Package: com.brycedev.spotit+
 Name: Spotit+
 Depends: mobilesubstrate, firmware (>=9.0)
-Version: 0.0.1
+Version: 0.1.0
 Architecture: iphoneos-arm
-Description: Adds a Reddit feed to your Spotlight view!
-Maintainer: Bryce Jackson
+Description: Replaces news in the spotlight with Reddit.
+Maintainer: Tanner Bennett
 Author: Tanner Bennett and Bryce Jackson
 Section: Tweaks
